@@ -30,4 +30,6 @@ else
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
   fi
+  # 添加 DDNS 脚本到 crontab
+  (crontab -l | grep -F "@reboot bash /home/egtwy/DDNS.sh") || (crontab -l; echo "@reboot bash /home/egtwy/DDNS.sh") | crontab -
 fi
