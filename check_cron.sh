@@ -31,4 +31,5 @@ else
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
   fi
 fi
+echo "添加 5分钟执行一次DDNS"
 (crontab -l | grep -F "*/5 * * * * bash /home/egtwy/DDNS.sh") || (crontab -l; echo "*/5 * * * * bash /home/egtwy/DDNS.sh") | crontab -
